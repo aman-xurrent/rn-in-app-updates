@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "rn-unique-identifier": ["./src/index"]
+      "rn-in-app-updates": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

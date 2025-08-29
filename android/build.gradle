@@ -1,6 +1,6 @@
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RnUniqueIdentifier_kotlinVersion"]
+  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RnInAppUpdates_kotlinVersion"]
 
   repositories {
     google()
@@ -26,11 +26,11 @@ if (isNewArchitectureEnabled()) {
 }
 
 def getExtOrDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["RnUniqueIdentifier_" + name]
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["RnInAppUpdates_" + name]
 }
 
 def getExtOrIntegerDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["RnUniqueIdentifier_" + name]).toInteger()
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["RnInAppUpdates_" + name]).toInteger()
 }
 
 def supportsNamespace() {
@@ -44,7 +44,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "pkg.rnuniqueidentifier"
+    namespace "pkg.rninappupdates"
 
     sourceSets {
       main {
@@ -90,4 +90,8 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  
+  // Play Core library for in-app updates
+  implementation 'com.google.android.play:app-update:2.1.0'
+  implementation 'com.google.android.play:app-update-ktx:2.1.0'
 }

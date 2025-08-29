@@ -1,13 +1,13 @@
 import { NativeModules, Platform } from 'react-native';
 
 const LINKING_ERROR =
-  `The package 'rn-unique-identifier' doesn't seem to be linked. Make sure: \n\n` +
+  `The package 'rn-in-app-updates' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const RnUniqueIdentifier = NativeModules.RnUniqueIdentifier
-  ? NativeModules.RnUniqueIdentifier
+const RnInAppUpdates = NativeModules.RnInAppUpdates
+  ? NativeModules.RnInAppUpdates
   : new Proxy(
       {},
       {
@@ -17,6 +17,15 @@ const RnUniqueIdentifier = NativeModules.RnUniqueIdentifier
       }
     );
 
-export function getPersistentIdentifier(callback: (uid: string) => void): void {
-  RnUniqueIdentifier.getPersistentIdentifier(callback);
+export interface UpdateInfo {
+  isUpdateAvailable: boolean;
+  updateUrl?: string;
+}
+
+export function checkForUpdate(): Promise<UpdateInfo> {
+  return RnInAppUpdates.checkForUpdate();
+}
+
+export function updateApp(): Promise<void> {
+  return RnInAppUpdates.updateApp();
 }
