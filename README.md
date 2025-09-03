@@ -3,7 +3,6 @@
 The `rn-in-app-updates` npm package is designed to provide a simple and effective solution for performing in-app updates in React Native applications. The methods provided by this package remains consistent across both Android and iOS platforms. In iOS user'll get a bottom drawer sheet opening app store page of the app to update the app manually and in android user'll be shown an immediate popup to update the app.
 
 ### New Architecture Support
-TODO:
 - use `rn-in-app-updates` npm package for old & new architecture support
 
 ### Features
