@@ -4,8 +4,7 @@ The `rn-in-app-updates` npm package is designed to provide a simple and effectiv
 
 ### New Architecture Support
 TODO:
-- use `rn-in-app-updates` npm package for new architecture support
-- use `rn-in-app-updates-oldarch` npm package for old architecture support
+- use `rn-in-app-updates` npm package for old & new architecture support
 
 ### Features
 Cross-Platform Support: Works seamlessly on both Android and iOS platforms.
